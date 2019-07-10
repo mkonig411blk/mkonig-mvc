@@ -2,15 +2,15 @@ class ActivitiesController < ApplicationController
 
   get '/activities' do
     @activities = Activity.all
-    erb :'/activities/index' 
+    erb :'/activities/index'
   end
 
-  get '/activities/new' do 
+  get '/activities/new' do
     @trips = Trip.all
     erb :'/activities/new'
   end
 
-  post '/activities' do 
+  post '/activities' do
  @activity = Activity.create(params[:activity])
       if !params["trip"]["name"].empty?
         @trip.activities << Activity.create(name: params["activity"]["name"])
@@ -18,13 +18,13 @@ class ActivitiesController < ApplicationController
     redirect "activities/#{@activity.id}"
   end
 
-  get '/activities/:id' do 
+  get '/activities/:id' do
     @activity = Activity.find(params[:id])
     erb :'/activities/show'
   end
 
-  patch '/activities/:id' do 
-
+  patch '/activities/:id' do
+# I have no idea what any of this code does
     redirect to "activities/#{@activity.id}"
   end
 end
