@@ -25,6 +25,7 @@ class ActivitiesController < ApplicationController
 
   patch '/activities/:id' do
 # I have no idea what any of this code does
+# comment #2
     redirect to "activities/#{@activity.id}"
   end
 end
