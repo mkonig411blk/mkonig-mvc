@@ -1,0 +1,29 @@
+<h1>Update Trip</h1>
+ 
+<form action="/trips/<%=@trip.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">  
+  <label>Name:</label>
+ 
+  <br>
+ 
+  <input type="text" name="trip[name]" id="trip_name" value="<%=@trip.name%>">
+ 
+  <br>
+ 
+  <label>Choose an existing activity:</label>
+ 
+  <br>
+ 
+  <% @activities.each do |activity|%>
+    <input type="checkbox" name="trip[activity_ids][]" id="<%= activity.id%>" value="<%=activity.id%>" <%='checked' if @trip.activities.include?(activity) %>><%=activity.name%></input>
+  <%end%>
+ 
+  <br>
+ 
+  <label>and/or, create a new activity:</label>
+  <br>
+  <label>name:</label>
+    <input  type="text" name="activity[name]" id="activity_name"></input>
+  <br>
+  <input type="submit" value="Update Trip">
+</form>
