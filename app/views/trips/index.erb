@@ -1,0 +1,16 @@
+<h2>My Existing Trips:</h2>
+<ul>
+  <% if @trips.length > 0
+  @trips.each do |trip|%>
+  Trip Name:<strong> <%=trip.name%> in <%=trip.location%></strong>
+  <li>From <%=trip.start_date%> to <%=trip.end_date%></li>
+  <li>Attendee List: <%=trip.attendees%></li>
+  <li>Transporation Method: <%=trip.transportation%></li>
+  <br>
+  <%end%>
+  <% else %>
+  <h4>You have not created any trips yet!</h4>
+  <%end%>
+  <h5><a href="/trips/new">CREATE A NEW TRIP</a></h5>
+
+</ul>

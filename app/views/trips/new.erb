@@ -1,23 +1,11 @@
-<h1>Create a new trip</h1>
+<h1>Your new trip:</h1>
 
 <form action="/trips" method="POST">
-  <label>Name:</label>
-
-  <br>
-
-  <input type="text" name="trip[name]">
-
-  <br>
-
-  <%@activities.each do |activity|%>
-    <input type="checkbox" name="trip[activity_ids][]" value="<%=activity.id%>" id="<%=activity.id%>"><%=activity.name%></input>
-  <%end%>
-
-   <label>and/or, create a new activity:</label>
-    <br>
-    <label>name:</label>
-      <input  type="text" name="activity[name]"></input>
-    <br>
-
-  <input type="submit" value="Create Trip">
+  <p>Trip Name: <input type="text" name="trip[name]" required></p>
+  <p>Location: <input type="text" name="trip[location]"></p>
+  <p>Start Date: <input type="date" name="trip[start_date]"></p>
+  <p>End Date: <input type="date" name="trip[end_date]"></p>
+  <p>Attendees: <input type="text" name="trip[attendees]"></p>
+  <p>Transporation Method: <input type="text" name="trip[transportation]"></p>
+  <input type="submit" id="Submit" value="Create Trip">
 </form>

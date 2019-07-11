@@ -1,13 +1,17 @@
 <h1><%=@trip.name%></h1>
 <h4>Activities:</h4>
 <ul>
-  <%@trip.activities.each do |activity|%>
+  <% if @activities.length > 0
+  @activities.each do |activity|%>
   <li><%=activity.type%></li>
   <li><%=activity.location%></li>
   <li><%=activity.address%></li>
   <li><%=activity.duration%> hours</li>
   <li><%=activity.attendees%></li>
   <li><%=activity.transportation%></li>
-
   <%end%>
+  <% else %>
+  <h4>You have not created any activities for this trip yet!</h4>
+  <%end%>
+  <h5><a href="/activities/new">CREATE A NEW ACTIVITY</a></h5>
 </ul>

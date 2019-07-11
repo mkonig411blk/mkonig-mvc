@@ -6,16 +6,28 @@ class ActivitiesController < ApplicationController
   end
 
   get '/activities/new' do
-    @trips = Trip.all
+    @user = current_user
+    @trips = @user.trips
     erb :'/activities/new'
   end
 
   post '/activities' do
- @activity = Activity.create(params[:activity])
-      if !params["trip"]["name"].empty?
-        @trip.activities << Activity.create(name: params["activity"]["name"])
-      end
-    redirect "activities/#{@activity.id}"
+    @trip =
+    # why is this a string and not a key?
+    @trip.activities << Activity.create(params["activity"])
+    redirect to "/trips"
+    # redirect to the all trips page after adding a new activity
+
+
+    # @user = current_user
+    # # assign user to the instance of the current user
+    # @trip = Trip.create(params["trip"])
+    # # why is this a string and not a key?
+    # # assign trip to the newly created trip using params
+    # @trip.user = @user
+    # # can I refactor 2 above lines of code?
+    # @user.trips << @trip
+    # redirect to '/trips'
   end
 
   get '/activities/:id' do
@@ -24,8 +36,6 @@ class ActivitiesController < ApplicationController
   end
 
   patch '/activities/:id' do
-# I have no idea what any of this code does
-# comment #2
     redirect to "activities/#{@activity.id}"
   end
 end

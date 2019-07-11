@@ -1,0 +1,11 @@
+<h1>Your new activity:</h1>
+
+<form action="/activities" method="POST">
+  <p>Activity Type: <input type="text" name="activity[type]" required></p>
+  <p>Location: <input type="text" name="activity[location]"></p>
+  <p>Address: <input type="text" name="activity[address]"></p>
+  <p>Duration (Hours): <input type="number" name="activity[duration]"></p>
+  <p>Attendees: <input type="text" name="activity[attendees]"></p>
+  <p>Transporation Method: <input type="text" name="activity[transportation]"></p>
+  <input type="submit" id="Submit" value="Create Activity">
+</form>
