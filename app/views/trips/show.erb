@@ -1,0 +1,13 @@
+<h1><%=@trip.name%></h1>
+<h4>Activities:</h4>
+<ul>
+  <%@trip.activities.each do |activity|%>
+  <li><%=activity.type%></li>
+  <li><%=activity.location%></li>
+  <li><%=activity.address%></li>
+  <li><%=activity.duration%> hours</li>
+  <li><%=activity.attendees%></li>
+  <li><%=activity.transportation%></li>
+
+  <%end%>
+</ul>
