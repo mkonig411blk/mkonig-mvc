@@ -7,6 +7,7 @@ class CreateTripsTable < ActiveRecord::Migration[5.2]
       t.date :end_date
       t.string :attendees
       t.string :transportation
+      t.integer :user_id
     end
   end
 end

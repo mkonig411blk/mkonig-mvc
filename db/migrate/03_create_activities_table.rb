@@ -8,6 +8,7 @@ class CreateActivitiesTable < ActiveRecord::Migration[5.2]
       t.date :day
       t.string :attendees
       t.string :transportation
+      t.integer :trip_id
     end
   end
 end
