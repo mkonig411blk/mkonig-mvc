@@ -2,7 +2,7 @@
 <ul>
   <% if @trips.length > 0
   @trips.each do |trip|%>
-  Trip Name:<strong> <%=trip.name%> in <%=trip.location%></strong>
+  <a href="/trips/<%=trip.id%>">Trip Name:<strong> <%=trip.name%> in <%=trip.location%></strong></a>
   <li>From <%=trip.start_date%> to <%=trip.end_date%></li>
   <li>Attendee List: <%=trip.attendees%></li>
   <li>Transporation Method: <%=trip.transportation%></li>
@@ -12,6 +12,7 @@
   <h4>You have not created any trips yet!</h4>
   <%end%>
   <h5><a href="/trips/new">CREATE A NEW TRIP</a></h5>
+  <h5><a href="/activities/new">CREATE AN ACTIVITY FOR ONE OF YOUR TRIPS</a></h5>
   <h5><a href="/logout">LOGOUT</a></h5>
 
 </ul>

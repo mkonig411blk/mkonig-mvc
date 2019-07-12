@@ -12,22 +12,12 @@ class ActivitiesController < ApplicationController
   end
 
   post '/activities' do
-    @trip =
+    @trip = params["activity"]["trip_id"]
+    # I want to grab their input from the dropdown- how? is it trip.id? does this happen automatically?
     # why is this a string and not a key?
     @trip.activities << Activity.create(params["activity"])
-    redirect to "/trips"
+    redirect to "/trips/#{@trip.id}"
     # redirect to the all trips page after adding a new activity
-
-
-    # @user = current_user
-    # # assign user to the instance of the current user
-    # @trip = Trip.create(params["trip"])
-    # # why is this a string and not a key?
-    # # assign trip to the newly created trip using params
-    # @trip.user = @user
-    # # can I refactor 2 above lines of code?
-    # @user.trips << @trip
-    # redirect to '/trips'
   end
 
   get '/activities/:id' do

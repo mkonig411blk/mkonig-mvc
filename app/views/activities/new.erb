@@ -7,7 +7,7 @@
   <p>Duration (Hours): <input type="number" name="activity[duration]"></p>
   <p>Attendees: <input type="text" name="activity[attendees]"></p>
   <p>Transporation Method: <input type="text" name="activity[transportation]"></p>
-  <p>Trip Name: <select name="trips"> <%@trips.each do |trip|%>
+  <p>Trip Name: <select name="trips" required> <%@trips.each do |trip|%>
     <option name="activity[trip_id]" value="<%=trip.id%>" id="<%=trip.id%>"><%=trip.name%></option>
   <%end%></select></p>
   <input type="submit" id="Submit" value="Create Activity">
