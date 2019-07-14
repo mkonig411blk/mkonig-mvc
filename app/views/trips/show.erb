@@ -30,7 +30,7 @@
             <li><%=activity.duration%> hours on <%=activity.day%></li>
             <li>Attendee List: <%=activity.attendees%></li>
             <li>Transportation Method: <%=activity.transportation%></li>
-            <a href= "/activities/edit/<%=activity.id%>" class="button" style="background-color: grey; font-size: 10px">EDIT</a>
+            <a href= "/activities/<%=activity.id%>/edit" class="button" style="background-color: grey; font-size: 10px">EDIT</a>
             <form action="/activities/<%=activity.id%>" method="post">
                 <input id="hidden" type="hidden" name="_method" value="delete">
                 <input type="submit" value="DELETE" class="button" style="background-color: grey; font-size: 10px">
