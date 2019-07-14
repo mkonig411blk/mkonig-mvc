@@ -23,7 +23,18 @@ class ActivitiesController < ApplicationController
     erb :'/activities/show'
   end
 
+  get '/activities/:id/edit' do
+    @activity = Activity.find(params[:id])
+    erb :'/activities/edit'
+  end
+
   patch '/activities/:id' do
+    @trip = Trip.find_by_id(params[:id])
+    @recipe.name = params[:name]
+    @recipe.ingredients = params[:ingredients]
+    @recipe.cook_time = params[:cook_time]
+    @trip.save
+    redirect to "/trips"
     redirect to "activities/#{@activity.id}"
   end
 

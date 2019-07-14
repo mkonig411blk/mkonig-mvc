@@ -29,16 +29,18 @@
   <li><%=activity.duration%> hours on <%=activity.day%></li>
   <li>Attendee List: <%=activity.attendees%></li>
   <li>Transportation Method: <%=activity.transportation%></li>
+  <a href="/activities/<%= activity.id %>/edit" class="button" style="background-color: grey; font-size: 10px">EDIT</a>
   <form action="/activities/<%= activity.id %>" method="post">
       <input id="hidden" type="hidden" name="_method" value="delete">
       <input type="submit" value="DELETE" class="button" style="background-color: grey; font-size: 10px">
   </form>
+<br></br>
   <%end%>
   <% else %>
   <h5 style="padding: 20px;">You have not created any activities for this trip yet!</h5>
   <%end%>
   <a href="/activities/new" class="button">CREATE ACTIVITY</a>
-  <form action="/trips/<%= @trip.id %>" method="post">
+  <form style="display: inline-block;" action="/trips/<%= @trip.id %>" method="post">
       <input id="hidden" type="hidden" name="_method" value="delete">
       <input type="submit" value="DELETE TRIP" class="button" style="background-color: grey">
   </form>
