@@ -13,11 +13,9 @@ class ActivitiesController < ApplicationController
 
   post '/activities' do
     trip_id = params["activity"]["trip_id"]
-    # I want to grab their input from the dropdown- how? is it trip.id? does this happen automatically?
-    # why is this a string and not a key?
     Activity.create(params["activity"])
     redirect to "/trips/#{trip_id}"
-    # redirect to the all trips page after adding a new activity
+    # redirect to the trip page of the trip where the activity was newly added
   end
 
   get '/activities/:id' do
@@ -27,5 +25,12 @@ class ActivitiesController < ApplicationController
 
   patch '/activities/:id' do
     redirect to "activities/#{@activity.id}"
+  end
+
+  delete '/activities/:id' do
+    activity = Activity.find_by_id(params[:id])
+    trip_id = activity.trip_id
+    activity.delete
+    redirect to "/trips/#{trip_id}"
   end
 end

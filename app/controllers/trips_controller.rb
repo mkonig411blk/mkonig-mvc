@@ -14,19 +14,11 @@ class TripsController < ApplicationController
     @user = current_user
     # assign user variable to the instance of the current user
     @trip = Trip.create(params["trip"])
-    # why is this a string and not a key?
     # assign trip variable to the instance of the new trip using params
     @trip.user = @user
+    @user.trips << @trip
     # assign the user of the trip to the current user
-    # can I refactor 2 above lines of code?
-    # @user.trips << @trip
-    # add the new trip to the trips array for that user (is this already happening?) YES
     redirect to '/trips'
-  end
-
-  get '/trips/:id/edit' do
-    @trip = Trip.find(params[:id])
-    erb :'/trips/edit'
   end
 
   get '/trips/:id' do
@@ -35,8 +27,24 @@ class TripsController < ApplicationController
     erb :'/trips/show'
   end
 
-  patch '/trips/:id' do
+    get '/trips/:id/edit' do
+      @trip = Trip.find(params[:id])
+      erb :'/trips/edit'
+    end
 
-  end
+    patch '/trips/:id' do
+      @trip = Trip.find_by_id(params[:id])
+      @recipe.name = params[:name]
+      @recipe.ingredients = params[:ingredients]
+      @recipe.cook_time = params[:cook_time]
+      @trip.save
+      redirect to "/trips"
+    end
+
+    delete '/trips/:id' do
+      @trip = Trip.find_by_id(params[:id])
+      @trip.delete
+      redirect to '/trips'
+    end
 
 end
