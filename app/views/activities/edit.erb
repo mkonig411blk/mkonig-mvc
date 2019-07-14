@@ -10,19 +10,20 @@
     <form style="padding: 0px 20px;" action="/activities/<%=@activity.id%>" method="POST">
         <input id="hidden" type="hidden" name="_method" value="patch">
         <p>Trip Name:
-            <select name="activity[trip_id]" required>
+            <select name="activity[trip_id]" value ="<%=@trip_id%>" required>
                 <%@trips.each do |trip|%>
                 <option value="<%=trip.id%>" id="<%=trip.id%>"><%=trip.name%></option>
                 <%end%>
             </select>
         </p>
-            <p>Activity Name: <input type="text" name="activity[name]" required></p>
-            <p>Location: <input type="text" name="activity[location]"></p>
-            <p>Address: <input type="text" name="activity[address]"></p>
-            <p>Day: <input type="date" name="activity[day]"></p>
-            <p>Duration (Hours): <input type="number" name="activity[duration]"></p>
-            <p>Attendees: <input type="text" name="activity[attendees]"></p>
-            <p>Transporation Method: <input type="text" name="activity[transportation]"></p>
+            <p>Activity Name: <input type="text" name="activity[name]" value="<%=@activity.name%>" required></p>
+            <p>Location: <input type="text" name="activity[location]" value="<%=@activity.location%>"</p>
+            <p>Address: <input type="text" name="activity[address]" value="<%=@activity.address%>"</p>
+            <p>Day: <input type="date" name="activity[day]" value="<%=@activity.day%>"</p>
+            <p>Duration (Hours): <input type="number" name="activity[duration]" value="<%=@activity.duration%>"</p>
+            <p>Attendees: <input type="text" name="activity[attendees]" value="<%=@activity.attendees%>"</p>
+            <p>Transporation Method: <input type="text" name="activity[transportation]" value="<%=@activity.transportation%>"</p>
+            <br></br>
             <input type="submit" id="Submit" value="Update Activity">
         </form>
     </body>

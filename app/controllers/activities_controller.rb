@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
 
   get '/activities/:id/edit' do
     @activity = Activity.find_by_id(params[:id])
+    @trip_id = @activity.trip_id
     user = current_user
     @trips = user.trips
     erb :'/activities/edit'
@@ -27,7 +28,7 @@ class ActivitiesController < ApplicationController
 
   patch '/activities/:id' do
     activity = Activity.find_by_id(params[:id])
-    trip_id = @activity.trip_id
+    trip_id = activity.trip_id
     activity.update(params["activity"])
     redirect to "/trips/#{trip_id}"
   end
