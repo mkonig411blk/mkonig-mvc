@@ -1,47 +1,50 @@
 <head>
-      <title>Trip Organizer by MK</title>
-      <!-- Compiled and minified CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-     <!-- Compiled and minified JavaScript -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-     <style>
-         .button {
-         background-color: #1c87c9;
-         border: none;
-         color: white;
-         padding: 10px 10px;
-         text-align: center;
-         text-decoration: none;
-         display: inline-block;
-         font-size: 15px;
-         margin: 5px 0px;
-         cursor: pointer;
-         }
-      </style>
- </head>
-<h3 style="padding: 5px 20px;"><%=@trip.name%></h3>
-<h4 style="padding: 5px 20px;">Activities:</h4>
-  <% if @activities.length > 0 %>
-  <ul style="padding: 20px;">
-  <% @activities.each do |activity|%>
-  <li><strong><%=activity.name%> at <%=activity.location%></strong></li>
-  <li>Address: <%=activity.address%></li>
-  <li><%=activity.duration%> hours on <%=activity.day%></li>
-  <li>Attendee List: <%=activity.attendees%></li>
-  <li>Transportation Method: <%=activity.transportation%></li>
-  <a href="/activities/<%= activity.id %>/edit" class="button" style="background-color: grey; font-size: 10px">EDIT</a>
-  <form action="/activities/<%= activity.id %>" method="post">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <input type="submit" value="DELETE" class="button" style="background-color: grey; font-size: 10px">
-  </form>
-<br></br>
-  <%end%>
-  <% else %>
-  <h5 style="padding: 20px;">You have not created any activities for this trip yet!</h5>
-  <%end%>
-  <a href="/activities/new" class="button">CREATE ACTIVITY</a>
-  <form style="display: inline-block;" action="/trips/<%= @trip.id %>" method="post">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <input type="submit" value="DELETE TRIP" class="button" style="background-color: grey">
-  </form>
+    <title>Trip Organizer by MK</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        .button {
+            background-color: #1c87c9;
+            border: none;
+            color: white;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 5px 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h4 style="padding: 5px 20px;"><%=@trip.name%></h4>
+    <h5 style="padding: 5px 20px;">Activities:</h5>
+    <% if @activities.length > 0 %>
+    <ul style="padding: 20px;">
+            <% @activities.each do |activity|%>
+            <li><strong><%=activity.name%> at <%=activity.location%></strong></li>
+            <li>Address: <%=activity.address%></li>
+            <li><%=activity.duration%> hours on <%=activity.day%></li>
+            <li>Attendee List: <%=activity.attendees%></li>
+            <li>Transportation Method: <%=activity.transportation%></li>
+            <a href="/activities/<%= activity.id %>/edit" class="button" style="background-color: grey; font-size: 10px">EDIT</a>
+            <form action="/activities/<%= activity.id %>" method="post">
+                <input id="hidden" type="hidden" name="_method" value="delete">
+                <input type="submit" value="DELETE" class="button" style="background-color: grey; font-size: 10px">
+            </form>
+        <%end%>
+        <% else %>
+            <p style="padding: 20px;">You have not created any activities for this trip yet!</p>
+        <%end%>
+        <a href="/activities/new" class="button" style = "margin: 10px;">ADD ACTIVITY</a>
+        <form action="/trips/<%= @trip.id %>" method="post" style="display: inline-block;">
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <input type="submit" value="DELETE TRIP" class="button" style="background-color: grey;">
+        </form><br>
+        <a href="/trips" class="button" style = "margin: 10px; background-color: ">SEE ALL TRIPS</a>
+
     </ul>
+</body>

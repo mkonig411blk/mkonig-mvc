@@ -1,11 +1,19 @@
-<h1>Your new trip:</h1>
-
-<form action="/trips" method="POST">
-  <p>Trip Name: <input type="text" name="trip[name]" required></p>
-  <p>Location: <input type="text" name="trip[location]"></p>
-  <p>Start Date: <input type="date" name="trip[start_date]"></p>
-  <p>End Date: <input type="date" name="trip[end_date]"></p>
-  <p>Attendees: <input type="text" name="trip[attendees]"></p>
-  <p>Transporation Method: <input type="text" name="trip[transportation]"></p>
-  <input type="submit" id="Submit" value="Create Trip">
-</form>
+<head>
+    <title>Trip Organizer by MK</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <h4 style="padding: 5px 20px;">Your new trip:</h4>
+    <form style="padding: 0px 20px;" action="/trips" method="POST">
+        <p>Trip Name: <input type="text" name="trip[name]" required></p>
+        <p>Location: <input type="text" name="trip[location]"></p>
+        <p>Start Date: <input type="date" name="trip[start_date]"></p>
+        <p>End Date: <input type="date" name="trip[end_date]"></p>
+        <p>Attendees: <input type="text" name="trip[attendees]"></p>
+        <p>Transporation Method: <input type="text" name="trip[transportation]"></p>
+        <input type="submit" id="Submit" value="Create Trip">
+    </form>
+</body>
