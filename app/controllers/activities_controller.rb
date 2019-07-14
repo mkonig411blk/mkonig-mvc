@@ -18,11 +18,6 @@ class ActivitiesController < ApplicationController
     # redirect to the trip page of the trip where the activity was newly added
   end
 
-  get '/activities/:id' do
-    @activity = Activity.find(params[:id])
-    erb :'/activities/show'
-  end
-
   get '/activities/:id/edit' do
     @activity = Activity.find(params[:id])
     erb :'/activities/edit'
@@ -43,5 +38,7 @@ class ActivitiesController < ApplicationController
     trip_id = activity.trip_id
     activity.delete
     redirect to "/trips/#{trip_id}"
+    # redirect to the trip page of the trip where the activity was deleted
+
   end
 end
