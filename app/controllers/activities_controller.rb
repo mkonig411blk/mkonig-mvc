@@ -24,13 +24,10 @@ class ActivitiesController < ApplicationController
   end
 
   patch '/activities/:id' do
-    @trip = Trip.find_by_id(params[:id])
-    @recipe.name = params[:name]
-    @recipe.ingredients = params[:ingredients]
-    @recipe.cook_time = params[:cook_time]
-    @trip.save
-    redirect to "/trips"
-    redirect to "activities/#{@activity.id}"
+    @activity = Activity.find_by_id(params[:id])
+    @activity.update(params["activity"])
+    trip_id = @activity.trip_id
+    redirect to "/trips/#{trip_id}"
   end
 
   delete '/activities/:id' do

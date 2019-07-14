@@ -31,6 +31,11 @@
   <li>Attendee List: <%=trip.attendees%></li>
   <li>Transporation Method: <%=trip.transportation%></li>
   </div>
+  <a href="/trips/<%= trip.id %>/edit" class="button" style="background-color: grey; font-size: 10px">EDIT</a>
+  <form action="/trips/<%= trip.id %>" method="post">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input type="submit" value="DELETE" class="button" style="background-color: grey; font-size: 10px">
+  </form>
   <br>
   <%end%>
   <a href="/activities/new" class="button">CREATE ACTIVITY</a>
