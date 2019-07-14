@@ -12,13 +12,15 @@ class TripsController < ApplicationController
 
   post '/trips' do
     @user = current_user
-    # assign user to the instance of the current user
+    # assign user variable to the instance of the current user
     @trip = Trip.create(params["trip"])
     # why is this a string and not a key?
-    # assign trip to the newly created trip using params
+    # assign trip variable to the instance of the new trip using params
     @trip.user = @user
+    # assign the user of the trip to the current user
     # can I refactor 2 above lines of code?
-    @user.trips << @trip
+    # @user.trips << @trip
+    # add the new trip to the trips array for that user (is this already happening?) YES
     redirect to '/trips'
   end
 

@@ -1,14 +1,15 @@
 <h1>Your new activity:</h1>
 
 <form action="/activities" method="POST">
-  <p>Activity Type: <input type="text" name="activity[type]" required></p>
+  <p>Activity Name: <input type="text" name="activity[name]" required></p>
   <p>Location: <input type="text" name="activity[location]"></p>
   <p>Address: <input type="text" name="activity[address]"></p>
+  <p>Day: <input type="date" name="activity[day]"></p>
   <p>Duration (Hours): <input type="number" name="activity[duration]"></p>
   <p>Attendees: <input type="text" name="activity[attendees]"></p>
   <p>Transporation Method: <input type="text" name="activity[transportation]"></p>
-  <p>Trip Name: <select name="trips" required> <%@trips.each do |trip|%>
-    <option name="activity[trip_id]" value="<%=trip.id%>" id="<%=trip.id%>"><%=trip.name%></option>
+  <p>Trip Name: <select name="activity[trip_id]" required> <%@trips.each do |trip|%>
+    <option value="<%=trip.id%>" id="<%=trip.id%>"><%=trip.name%></option>
   <%end%></select></p>
   <input type="submit" id="Submit" value="Create Activity">
 

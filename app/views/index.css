@@ -1,4 +1,5 @@
 .title {
   text-align: center;
   color: blue;
+  border: 3px solid green;
 }

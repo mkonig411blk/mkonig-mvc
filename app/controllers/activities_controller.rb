@@ -12,11 +12,11 @@ class ActivitiesController < ApplicationController
   end
 
   post '/activities' do
-    @trip = params["activity"]["trip_id"]
+    trip_id = params["activity"]["trip_id"]
     # I want to grab their input from the dropdown- how? is it trip.id? does this happen automatically?
     # why is this a string and not a key?
-    @trip.activities << Activity.create(params["activity"])
-    redirect to "/trips/#{@trip.id}"
+    Activity.create(params["activity"])
+    redirect to "/trips/#{trip_id}"
     # redirect to the all trips page after adding a new activity
   end
 

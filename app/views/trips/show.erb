@@ -1,17 +1,38 @@
-<h1><%=@trip.name%></h1>
-<h4>Activities:</h4>
-<ul>
+<head>
+      <title>Trip Organizer by MK</title>
+      <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <style>
+         .button {
+         background-color: #1c87c9;
+         border: none;
+         color: white;
+         padding: 10px 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 15px;
+         margin: 5px 20px;
+         cursor: pointer;
+         }
+      </style>
+ </head>
+<h3 style="padding: 5px 20px;"><%=@trip.name%></h3>
+<h4 style="padding: 5px 20px;">Activities:</h4>
+<ul style="padding: 20px;">
   <% if @activities.length > 0
   @activities.each do |activity|%>
-  <li><%=activity.type%></li>
-  <li><%=activity.location%></li>
-  <li><%=activity.address%></li>
-  <li><%=activity.duration%> hours</li>
-  <li><%=activity.attendees%></li>
-  <li><%=activity.transportation%></li>
+  <li><strong><%=activity.name%> at <%=activity.location%></strong></li>
+  <li>Address: <%=activity.address%></li>
+  <li><%=activity.duration%> hours on <%=activity.day%></li>
+  <li>Attendee List: <%=activity.attendees%></li>
+  <li>Transportation Method: <%=activity.transportation%></li>
+  <br></br>
   <%end%>
   <% else %>
-  <h4>You have not created any activities for this trip yet!</h4>
+  <h4 style="padding: 20px;">You have not created any activities for this trip yet!</h4>
   <%end%>
-  <h5><a href="/activities/new">CREATE A NEW ACTIVITY</a></h5>
+  <a href="/activities/new" class="button">CREATE ACTIVITY</a>
 </ul>

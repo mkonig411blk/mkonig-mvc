@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 3) do
 
   create_table "activities", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.string "location"
     t.string "address"
     t.integer "duration"

@@ -1,7 +1,7 @@
 class CreateActivitiesTable < ActiveRecord::Migration[5.2]
   def change
     create_table :activities do |t|
-      t.string :type
+      t.string :name
       t.string :location
       t.string :address
       t.integer :duration

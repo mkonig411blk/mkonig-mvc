@@ -1,18 +1,45 @@
-<h2>My Existing Trips:</h2>
+<head>
+  <!-- <link rel="stylesheet" type = "text/css" href="index.css" /> -->
+      <title>Trip Organizer by MK</title>
+      <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <style>
+         .button {
+         background-color: #1c87c9;
+         border: none;
+         color: white;
+         padding: 10px 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 15px;
+         margin: 5px 20px;
+         cursor: pointer;
+         }
+      </style>
+ </head>
+ <body>
+<h3 style="padding: 20px;">My Existing Trips:</h3>
 <ul>
   <% if @trips.length > 0
   @trips.each do |trip|%>
+  <div style="padding: 5px 20px;">
   <a href="/trips/<%=trip.id%>">Trip Name:<strong> <%=trip.name%> in <%=trip.location%></strong></a>
   <li>From <%=trip.start_date%> to <%=trip.end_date%></li>
   <li>Attendee List: <%=trip.attendees%></li>
   <li>Transporation Method: <%=trip.transportation%></li>
+  </div>
   <br>
   <%end%>
   <% else %>
   <h4>You have not created any trips yet!</h4>
   <%end%>
-  <h5><a href="/trips/new">CREATE A NEW TRIP</a></h5>
-  <h5><a href="/activities/new">CREATE AN ACTIVITY FOR ONE OF YOUR TRIPS</a></h5>
-  <h5><a href="/logout">LOGOUT</a></h5>
+  <a href="/trips/new" class="button">CREATE TRIP</a>
+  <a href="/activities/new" class="button">CREATE ACTIVITY</a>
+  <br></br>
+  <a href="/logout" class="button" style="background-color: grey">LOGOUT</a>
 
 </ul>
+</body>
