@@ -18,15 +18,15 @@ class ActivitiesController < ApplicationController
     # redirect to the trip page of the trip where the activity was newly added
   end
 
-  get '/activities/:id/edit' do
-    @activity = Activity.find(params[:id])
+  get '/activities/edit/:id' do
+    activity = Activity.find_by_id(params[:id])
     erb :'/activities/edit'
   end
 
   patch '/activities/:id' do
-    @activity = Activity.find_by_id(params[:id])
-    @activity.update(params["activity"])
+    activity = Activity.find_by_id(params[:id])
     trip_id = @activity.trip_id
+    activity.update(params["activity"])
     redirect to "/trips/#{trip_id}"
   end
 
