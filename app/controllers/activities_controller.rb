@@ -31,6 +31,7 @@ class ActivitiesController < ApplicationController
     trip_id = activity.trip_id
     activity.update(params["activity"])
     redirect to "/trips/#{trip_id}"
+    # redirect to the trip page of the trip where the activity was edited
   end
 
   delete '/activities/:id' do

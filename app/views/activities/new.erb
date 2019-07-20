@@ -8,9 +8,16 @@
 <body>
     <h3 style="padding: 5px 20px;">Your new activity:</h3>
     <form style="padding: 0px 20px;" action="/activities" method="POST">
-        <p>Trip Name: <select name="activity[trip_id]" required> <%@trips.each do |trip|%>
-            <option value="<%=trip.id%>" id="<%=trip.id%>"><%=trip.name%></option>
-            <%end%></select></p>
+        <p>Trip Name:
+            <% if @trip %>
+            <input name = "activity[trip_id]" value= <%=@trip.id%> type="hidden">
+            <%= @trip.name %>
+            <% else %>
+            <select name="activity[trip_id]" required>
+                <%@trips.each do |trip|%>
+                <option value="<%=trip.id%>" id="<%=trip.id%>"><%=trip.name%></option>
+                <%end%></select></p>
+            <%end%>
         <p>Activity Name: <input type="text" name="activity[name]" required></p>
         <p>Location: <input type="text" name="activity[location]"></p>
         <p>Address: <input type="text" name="activity[address]"></p>

@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
     get '/trips' do
-        @user = current_user
+        current_user
         @trips = @user.trips
         erb :'/trips/index'
     end
@@ -11,12 +11,12 @@ class TripsController < ApplicationController
     end
 
     post '/trips' do
-        @user = current_user
+        current_user
         # assign user variable to the instance of the current user
-        @trip = Trip.create(params["trip"])
+        @trip = Trip.new(params["trip"])
         # assign trip variable to the instance of the new trip using params
         @trip.user = @user
-        @user.trips << @trip
+        @trip.save
         # assign the user of the trip to the current user
         redirect to '/trips'
     end
@@ -25,6 +25,12 @@ class TripsController < ApplicationController
         @trip = Trip.find(params[:id])
         @activities = @trip.activities
         erb :'/trips/show'
+    end
+
+    get '/trips/:id/new_activity' do
+        @trip = Trip.find(params[:id])
+        @user = current_user
+        erb :'/activities/new'
     end
 
     get '/trips/:id/edit' do
